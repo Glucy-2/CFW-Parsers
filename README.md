@@ -1,5 +1,5 @@
 # CFW-Parsers
-自用CFW（Clash for Windows）的Parsers设置
+自用CFW（Clash for Windows）的Parsers设置    
 感谢 Fndroid/clash_for_windows_pkg#2193
 ````yaml
 parsers: # array
