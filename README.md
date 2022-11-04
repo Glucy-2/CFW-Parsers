@@ -1,7 +1,22 @@
 # CFW-Parsers
-自用CFW（Clash for Windows）的Parsers设置    
-感谢 Fndroid/clash_for_windows_pkg#2193
+自用 CFW（Clash for Windows） 的 Parsers 设置    
+感谢 Fndroid/clash_for_windows_pkg#2193 和 [SplitGemini/Clash_configuration](//github.com/SplitGemini/Clash_configuration)
 ````yaml
+#append-rules          数组  数组合并至原配置 rules 数组后
+#prepend-rules         数组  数组合并至原配置 rules 数组前
+#append-proxies        数组  数组合并至原配置 proxies 数组后
+#prepend-proxies       数组  数组合并至原配置 proxies 数组前
+#append-proxy-groups   数组  数组合并至原配置 proxiy-groups 数组后
+#prepend-proxy-groups  数组  数组合并至原配置 proxiy-groups 数组前
+#mix-proxy-providers   对象  对象合并至原配置 proxy-providers 中
+#mix-rule-providers    对象  对象合并至原配置 rule-providers 中
+#mix-object            对象  对象合并至原配置最外层中
+#commands              数组  在上面操作完成后执行简单命令操作配置文件
+#每个命令可以被分为三个部分，分别是：定位+操作+设定值
+#定位：定位中每个层级以.分割，可以以name作为分割依据
+#操作：=：覆盖，+：插入，-：删除
+#支持[]proxyNames，[]groupNames和[]shuffledProxyNames，并支持使用正则过滤'|'其中节点
+
 parsers: # array
   # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
   - reg: ^.*$
