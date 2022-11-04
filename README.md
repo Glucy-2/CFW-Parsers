@@ -1,6 +1,6 @@
 # CFW-Parsers
 自用 CFW（Clash for Windows） 的 Parsers 设置    
-感谢 Fndroid/clash_for_windows_pkg#2193 和 [SplitGemini/Clash_configuration](//github.com/SplitGemini/Clash_configuration)
+感谢 Fndroid/clash_for_windows_pkg#2193 ， [SplitGemini/Clash_configuration](//github.com/SplitGemini/Clash_configuration) 和 [Loyalsoldier/clash-rules](//github.com/Loyalsoldier/clash-rules)
 ````yaml
 #append-rules          数组  数组合并至原配置 rules 数组后
 #prepend-rules         数组  数组合并至原配置 rules 数组前
