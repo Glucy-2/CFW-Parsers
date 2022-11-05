@@ -2,7 +2,7 @@
 自用 CFW（Clash for Windows） 的 Parsers 设置    
 感谢 [fangweilong/clash-parsers](//github.com/fangweilong/clash-parsers) ， [SplitGemini/Clash_configuration](//github.com/SplitGemini/Clash_configuration) 和 [Loyalsoldier/clash-rules](//github.com/Loyalsoldier/clash-rules)
 > **注意：**    
-使用时请将第4行的`"D:\\Glucy2\\.config\\clash\\parser.js"`替换为下载的parser.js所在的完整路径
+使用时请将第4行的`"D:\\Glucy2\\.config\\clash\\parser.js"`替换为从本仓库中下载的parser.js所在的完整路径
 ````yaml
 parsers: # array
   # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
