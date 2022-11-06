@@ -278,7 +278,7 @@ let intervalTime = 300
 let proxy={
   "name": "🪜 代理",
   "type": "select",
-  "proxies":["🌏 全球直连","🛑 全球拦截","♻️ 自动选择","✅ 选择节点"]
+  "proxies":["🌏 全球直连","🛑 全球拦截","♻️ 自动选择","🔄 负载均衡","✅ 选择节点"]
 }
 
 //自动选择
@@ -288,6 +288,14 @@ let automatic={
     "url": "http://www.gstatic.com/generate_204",
     "interval": intervalTime,//更新周期
     "proxies":[]
+}
+//负载均衡
+let loadBalance={
+  "name": "🔄 负载均衡",
+  "type": "load-balance",
+  "url": "http://www.gstatic.com/generate_204",
+  "interval": intervalTime,//更新周期
+  "proxies":[]
 }
 //选择节点
 let select={
@@ -375,7 +383,7 @@ let others={
 
 //内置代理规则
 let builtInProxyGroups=[
-  proxy,automatic,select,fallback,direct,prevent,all,privateNetwork,icloud,apple,google,telegram,youtube,microsoft,others
+  proxy,automatic,loadBalance,select,fallback,direct,prevent,all,privateNetwork,icloud,apple,google,telegram,youtube,microsoft,others
 ]
 
 
@@ -408,6 +416,8 @@ module.exports.parse = async function(raw, {axios, yaml, notify,console},{ name,
                 }
                 //添加所有的节点到一个分组中，方便测试连通
                 all["proxies"].push(proxy.name)
+                //负载均衡
+                loadBalance["proxies"].push(proxy.name)
             }else{
                 // console.log("匹配不成功",proxy.name,area.name)
             }
