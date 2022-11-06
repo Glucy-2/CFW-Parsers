@@ -12,8 +12,8 @@ parsers: # array
     yaml:
   # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
-        - DOMAIN,fastly.jsdelivr.net,DIRECT
-        - DOMAIN,cdn.jsdelivr.net,DIRECT
+        #- DOMAIN,fastly.jsdelivr.net,DIRECT
+        - DOMAIN,cdn.jsdelivr.net,🪜 代理
         - DOMAIN-SUFFIX,skimit.cn,DIRECT
         - DOMAIN-SUFFIX,skimit.net,DIRECT
         - PROCESS-NAME,v2ray,DIRECT
