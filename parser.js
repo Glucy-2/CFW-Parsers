@@ -278,7 +278,7 @@ let intervalTime = 300
 let proxy={
   "name": "🪜 代理",
   "type": "select",
-  "proxies":["🌏 全球直连","🛑 全球拦截","♻️ 自动选择","🔄 负载均衡","✅ 选择节点"]
+  "proxies":["🌏 全球直连","🛑 全球拦截","♻️ 自动选择","🔄 负载均衡","✅ 选择地区","✨ 选择节点"]
 }
 
 //自动选择
@@ -297,11 +297,17 @@ let loadBalance={
   "interval": intervalTime,//更新周期
   "proxies":[]
 }
-//选择节点
-let select={
-    "name": "✅ 选择节点",
+//选择地区
+let selectArea={
+    "name": "✅ 选择地区",
     "type": "select",
     "proxies":["♻️ 自动选择"]
+}
+//选择节点
+let selectNode={
+  "name": "✨ 选择节点",
+  "type": "select",
+  "proxies":["♻️ 自动选择"]
 }
 //故障转移
 let fallback={
@@ -315,7 +321,7 @@ let fallback={
 let direct={
     "name": "🌏 全球直连",
     "type": "select",
-    "proxies":["DIRECT","✅ 选择节点","♻️ 自动选择"]
+    "proxies":["DIRECT","✅ 选择地区","✨ 选择节点","♻️ 自动选择"]
 }
 //阻止链接
 let prevent={
@@ -323,67 +329,59 @@ let prevent={
     "type": "select",
     "proxies":["REJECT", "DIRECT"]
 }
-//所有节点，方便测试连通
-let all={
-    "name": "🈷️ 所有节点",
-    "type": "url-test",
-    "url": "http://www.gstatic.com/generate_204",
-    "interval": intervalTime,//更新周期
-    "proxies":[]
-}
 //私有网络
 let privateNetwork={
   "name": "⛓️ 私有网络",
   "type": "select",
-  "proxies":["🌏 全球直连","🛑 全球拦截","♻️ 自动选择","✅ 选择节点"]
+  "proxies":["🌏 全球直连","🛑 全球拦截","♻️ 自动选择","✅ 选择地区","✨ 选择节点"]
 }
 //icloud
 let icloud={
   "name": "☁️ Icloud",
   "type": "select",
-  "proxies":["♻️ 自动选择","✅ 选择节点","🌏 全球直连","🛑 全球拦截"]
+  "proxies":["♻️ 自动选择","✅ 选择地区","✨ 选择节点","🌏 全球直连","🛑 全球拦截"]
 }
 //apple
 let apple={
   "name": "📱 Apple",
   "type": "select",
-  "proxies":["♻️ 自动选择","✅ 选择节点","🌏 全球直连","🛑 全球拦截"]
+  "proxies":["♻️ 自动选择","✅ 选择地区","✨ 选择节点","🌏 全球直连","🛑 全球拦截"]
 }
 //google
 let google={
   "name": "📫 Google",
   "type": "select",
-  "proxies":["♻️ 自动选择","✅ 选择节点","🌏 全球直连","🛑 全球拦截"]
+  "proxies":["♻️ 自动选择","✅ 选择地区","✨ 选择节点","🌏 全球直连","🛑 全球拦截"]
 }
 
 //telegram
 let telegram={
   "name": "📲 Telegram",
   "type": "select",
-  "proxies":["♻️ 自动选择","✅ 选择节点","🌏 全球直连","🛑 全球拦截"]
+  "proxies":["♻️ 自动选择","✅ 选择地区","✨ 选择节点","🌏 全球直连","🛑 全球拦截"]
 }
 //youtube
 let youtube={
   "name": "📺 Youtube",
   "type": "select",
-  "proxies":["♻️ 自动选择","✅ 选择节点","🌏 全球直连","🛑 全球拦截"]
+  "proxies":["♻️ 自动选择","✅ 选择地区","✨ 选择节点","🌏 全球直连","🛑 全球拦截"]
 }
 //微软
 let microsoft={
   "name": "Ⓜ️ 微软服务",
   "type": "select",
-  "proxies":["♻️ 自动选择","✅ 选择节点","🌏 全球直连","🛑 全球拦截"]
+  "proxies":["♻️ 自动选择","✅ 选择地区","✨ 选择节点","🌏 全球直连","🛑 全球拦截"]
 }
 //其他没命中的
 let others={
   "name": "🐟 未命中规则",
   "type": "select",
-  "proxies":["🌏 全球直连","🛑 全球拦截","♻️ 自动选择","✅ 选择节点"]
+  "proxies":["🌏 全球直连","🛑 全球拦截","♻️ 自动选择","✅ 选择地区","✨ 选择节点"]
 }
 
 //内置代理规则
 let builtInProxyGroups=[
-  proxy,automatic,loadBalance,select,fallback,direct,prevent,all,privateNetwork,icloud,apple,google,telegram,youtube,microsoft,others
+  proxy,automatic,loadBalance,selectArea,selectNode,fallback,direct,prevent,privateNetwork,icloud,apple,google,telegram,youtube,microsoft,others
 ]
 
 
@@ -414,8 +412,8 @@ module.exports.parse = async function(raw, {axios, yaml, notify,console},{ name,
                     proxies.push(proxy.name);
                     areaJson["name"]=regionName;
                 }
-                //添加所有的节点到一个分组中，方便测试连通
-                all["proxies"].push(proxy.name)
+                //选择节点
+                selectNode["proxies"].push(proxy.name)
                 //负载均衡
                 loadBalance["proxies"].push(proxy.name)
             }else{
@@ -430,7 +428,7 @@ module.exports.parse = async function(raw, {axios, yaml, notify,console},{ name,
             //放到yml中
             content['proxy-groups'].push(areaJson)
             //对几个预置的规则进行处理
-            select["proxies"].push(regionName)
+            selectArea["proxies"].push(regionName)
             fallback["proxies"].push(regionName)
             automatic["proxies"].push(regionName)
         }
