@@ -4,9 +4,9 @@
 ````yaml
 parsers: # array
   # - reg: ^.*$ 匹配所有订阅，或  - url: https://example.com/profile.yaml 指定订阅
-  - reg: ^.*$
-  - url: https://fastly.jsdelivr.net/gh/Glucy-2/CFW-Parsers@main/parser.yaml
+  - url: ^.*$
     remote:
+      url: https://fastly.jsdelivr.net/gh/Glucy-2/CFW-Parsers@main/parser.yaml
       url:  https://fastly.jsdelivr.net/gh/Glucy-2/CFW-Parsers@main/parser.js
       cache: true # 是否对重复下载此预处理代码使用缓存
 ````

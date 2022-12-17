@@ -1,5 +1,5 @@
   # 建立自己的配置
-  #  yaml:
+    yaml:
   # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
         #- DOMAIN,fastly.jsdelivr.net,DIRECT
