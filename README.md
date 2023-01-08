@@ -13,6 +13,11 @@ parsers: # array
   # 添加规则
       prepend-rules: # 规则由上往下遍历，如上面规则已经命中，则不再往下处理
         #- DOMAIN,fastly.jsdelivr.net,DIRECT
+        - DOMAIN-SUFFIX,steamcontent.com,DIRECT
+        - DOMAIN-SUFFIX,recaptcha.net,🪜 代理
+        - DOMAIN-SUFFIX,pximg.net,🪜 代理
+        - DOMAIN-SUFFIX,pixiv.org,🪜 代理
+        - DOMAIN-SUFFIX,pixiv.net,🪜 代理
         - DOMAIN-SUFFIX,supes.top,🪜 代理
         - DOMAIN,www.midishow.com,DIRECT
         - DOMAIN-SUFFIX,facebook.com,🪜 代理
